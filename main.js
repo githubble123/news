@@ -61,12 +61,14 @@ function render() {
 
   newsHTML = newsList
     .map(
-      (news) => ` <div class="row news">
+      (news) => ` <div class="news row">
         <div class="col-lg-4">
             <img class="newsImageSize"src="${news.urlToImage}">
         </div>
         <div class="col-lg-8">
-            <h2>${news.title}</h2>
+            <a class="title" target="_blank" href="${news.url}">${
+                news.title
+              }</a>
             <p> ${news.description}</p>
             <div>
                 ${news.source.name} * ${news.publishedAt}
@@ -115,7 +117,7 @@ function paginationRender() {
   </li>`;
   }
 
-  paginationHTML += `<li class="page-item" onclick="moveToPage(${page+1})">
+  paginationHTML += `<li class="page-item" onclick="moveToPage(${page-1})">
     <a class="page-link" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
     </a>
@@ -123,20 +125,7 @@ function paginationRender() {
 
   document.querySelector(".pagination").innerHTML = paginationHTML;
 
-  /*  <nav aria-label="Page navigation example">
-    <ul class="pagination">
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-        </a>
-      </li>
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-        </a>
-      </li>
-    </ul>
-  </nav>; */
+
 }
 
 getLatestNews();
@@ -147,12 +136,9 @@ async function getNewsByKeyword() {
     `https://newsapi.org/v2/top-headlines?country=kr&q=${keyword}&apiKey=${apiKey}`
   );
   getNews();
-}
+};
 
 function moveToPage(pageNum) {
   page = pageNum;
   getNews();
-}
-//1. 버튼들에 클릭이벤트를 줘야함
-//2. 카테고리별 뉴스 가져오기
-//3. 그 뉴스를 보여주기
+};
