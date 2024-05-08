@@ -35,7 +35,7 @@ async function getNews() {
   } catch (error) {
     errorRender(error.message);
   }
-}
+};
 
 async function getLatestNews() {
   url = new URL(
@@ -46,7 +46,7 @@ async function getLatestNews() {
   var data = await response.json();
   getNews();
   console.log("newsList", newsList);
-}
+};
 
 async function getNewsByCategory(event) {
   var category = event.target.id;
@@ -54,7 +54,7 @@ async function getNewsByCategory(event) {
     `https://newsapi.org/v2/top-headlines?country=kr&category=${category}&apiKey=${apiKey}`
   );
   getNews();
-}
+};
 
 function render() {
   var newsHTML = ``;
@@ -67,8 +67,8 @@ function render() {
         </div>
         <div class="col-lg-8">
             <a class="title" target="_blank" href="${news.url}">${
-                news.title
-              }</a>
+        news.title
+      }</a>
             <p> ${news.description}</p>
             <div>
                 ${news.source.name} * ${news.publishedAt}
@@ -79,7 +79,7 @@ function render() {
     .join("");
 
   document.getElementById("newsBoard").innerHTML = newsHTML;
-}
+};
 
 function errorRender(errorMessage) {
   var errorHTML = `
@@ -87,7 +87,7 @@ function errorRender(errorMessage) {
     ${errorMessage}
     </div>`;
   document.getElementById("newsBoard").innerHTML = errorHTML;
-}
+};
 
 function paginationRender() {
   var pageGroup = Math.ceil(page / groupSize);
@@ -101,7 +101,7 @@ function paginationRender() {
     firstPage = 1;
   }
 
-  var paginationHTML = `<li class="page-item" onclick="moveToPage(${page-1})">
+  var paginationHTML = `<li class="page-item" onclick="moveToPage(${page - 1})">
         <a class="page-link" aria-label="Previous">
           <span aria-hidden="true">&laquo;</span>
         </a>
@@ -117,16 +117,14 @@ function paginationRender() {
   </li>`;
   }
 
-  paginationHTML += `<li class="page-item" onclick="moveToPage(${page-1})">
+  paginationHTML += `<li class="page-item" onclick="moveToPage(${page - 1})">
     <a class="page-link" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
     </a>
     </li>`;
 
   document.querySelector(".pagination").innerHTML = paginationHTML;
-
-
-}
+};
 
 getLatestNews();
 
