@@ -3,6 +3,34 @@
   display: flex;
   justify-content: center;
 }
+
+.weatherBoard {
+  display: flex; 
+  justify-content: space-between;
+  width: 300px; 
+  height : 170px;
+  background-color : white; 
+  padding : 40px;
+  color : rgb(38, 90, 142); 
+  margin-top: -150px;
+}
+
+#weatherInfo, #weatherInfoDetail {
+  display: inline-block;
+}
+
+#weatherInfo {
+  position: absolute;
+  right: 0;
+  margin-right: 19em;
+}
+
+#weatherInfoDetail {
+  position: absolute;
+  right: 0;
+  margin-right: 9em;
+}
+
 .menus {
   margin-top: 1em;
   display: flex;
@@ -10,6 +38,7 @@
   flex-wrap: wrap;
   border-top: 1px solid #ebebeb;
   border-bottom: 4px double black;
+  width: 100%;
 }
 .menus button {
   border: none;
